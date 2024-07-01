@@ -1,0 +1,34 @@
+name: flatten-main
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set Git user
+        run: |
+          git config --global user.email "anonymous@nowhere.com"
+          git config --global user.name "anonymous"
+      - name: Get last commit message
+        id: get-commit-message
+        run: echo "LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
+      - name: Flatten git commits
+        if: env.LAST_COMMIT_MESSAGE != 'updated trustlist'
+        run: |
+          echo "Flatten commits to not bloat the repository history"
+          git checkout --orphan newBranch
+          git add -A
+          git commit -m "updated trustlist" 
+          git branch -D main
+          git branch -m main
+          git push -f origin main
+          git gc --aggressive --prune=all
