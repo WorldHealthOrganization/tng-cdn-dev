@@ -1,0 +1,16 @@
+{
+  "@context": {
+    "keyusage": {
+      "@id": "https://raw.githubusercontent.com/WorldHealthOrganization/tng-cdn-dev/refs/heads/main/keyusage-schema.json",
+      "@type": "@id"
+    },
+    "domain": {
+      "@id": "https://worldhealthorganization.github.io/smart-trust/ValueSet-Domains.schema.json",
+      "@type": "@id"
+    },
+    "participant": {
+      "@id": "https://worldhealthorganization.github.io/smart-trust/ValueSet-Participants.schema.json",
+      "@type": "@id"
+    }
+  }
+}
