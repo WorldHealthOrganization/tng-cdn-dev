@@ -1,0 +1,27 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://w3id.org/security/suites/jws-2020/v1",
+    {
+      "@version": 1.1,
+      "@protected": true,
+      "id": "@id",
+      "type": "@type",
+      "keyusages": "https://worldhealthorganization.github.io/smart-trust/ValueSet-KeyUsage-DEV.jsonld#",
+      "participants": "https://worldhealthorganization.github.io/smart-trust/ValueSet-Participants-DEV.jsonld#",
+      "domains": "https://worldhealthorganization.github.io/smart-trust/ValueSet-Domains-DEV.jsonld#",
+      "keyusage": {
+        "@id": "keyusages:",
+        "@type": "@id"
+      },
+      "participant": { 
+        "@id": "participants:",
+        "@type": "@id"
+      },
+      "domain": { 
+        "@id": "domains:",
+        "@type": "@id"
+      }
+    }
+  ]
+}
