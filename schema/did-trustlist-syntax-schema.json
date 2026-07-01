@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/WorldHealthOrganization/tng-cdn-dev/refs/heads/main/schema/did-trustlist-syntax-schema.json",
+  "title": "DID Document Syntax Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "@context": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "id": {
+      "type": "string"
+    },
+    "controller": {
+      "type": "string"
+    },
+    "verificationMethod": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "controller": {
+            "type": "string"
+          },
+
+          "publicKeyJwk": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "kty": { "type": "string" },
+              "kid": { "type": "string" },
+              "x5c": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "crv": { "type": "string" },
+              "x": { "type": "string" },
+              "y": { "type": "string" },
+              "e": { "type": "string" },
+              "n": { "type": "string" }
+            },
+            "required": ["kty", "kid", "x5c"]
+          },
+
+          "domain": {
+            "type": "string"
+          },
+          "participant": {
+            "type": "string"
+          },
+          "keyusage": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "controller",
+          "publicKeyJwk",
+          "domain",
+          "participant",
+          "keyusage"
+        ]
+      }
+    },
+
+    "proof": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": { "type": "string" },
+        "created": { "type": "string" },
+        "nonce": { "type": "string" },
+        "proofPurpose": { "type": "string" },
+        "verificationMethod": { "type": "string" },
+        "jws": { "type": "string" }
+      },
+      "required": [
+        "type",
+        "created",
+        "nonce",
+        "proofPurpose",
+        "verificationMethod",
+        "jws"
+      ]
+    }
+  },
+  "required": [
+    "@context",
+    "id",
+    "controller",
+    "verificationMethod",
+    "proof"
+  ]
+}
