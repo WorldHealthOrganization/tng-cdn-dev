@@ -1,0 +1,61 @@
+{
+    "@context": { 
+      "fhir": "http://hl7.org/fhir/",
+      "did":"https://www.w3.org/ns/did/v1",
+      {
+      "keyusagens": "https://raw.githubusercontent.com/WorldHealthOrganization/tng-cdn-dev/refs/heads/main/keyusage.jsonld",
+      "keyusage" : "keyusagens:keyusage",
+      "verificationMethod": {
+          "@id": "https://w3id.org/security#verificationMethod",
+          "context": {"keyusage" : "keyusagens:keyusage"}
+        }
+      }
+      },
+  "fhir:url": "http://smart.who.int/trust/ValueSet/KeyUsage",
+  "fhir:version": "1.2.0",
+  "fhir:name": "KeyUsage",
+  "fhir:title": "WHO GDHCN Key Usage ValueSet",
+  "fhir:description": "ValueSet of codes for key usage codes",
+  "fhir:publisher": "WHO",
+  "fhir:date": "2025-04-02T15:21:33+02:00",
+  "fhir:contact": {
+    "fhir:name": "WHO",
+    "fhir:url": "http://who.int"
+  },
+  "fhir:jurisdiction": {
+    "fhir:coding": {
+      "fhir:system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+      "fhir:code": "001"
+    }
+  },
+  "fhir:compose": {
+    "fhir:include": [
+      {
+        "fhir:system": "http://smart.who.int/trust/CodeSystem/KeyUsage",
+        "fhir:concept": [
+          {
+            "fhir:code": "SCA",
+            "fhir:display": "Signing Certificate Authority",
+            "fhir:description": "A certificate which acts a trust anchor in the verification of the certificate chain for the DSCs issued by a Trust Network participant"
+        
+          },
+          {
+            "fhir:code": "DSC",
+            "fhir:display": "Document Signing Certificate",
+            "fhir:description": "A certificate which may be used to verify a digital signature within a Verifiable Digital Health Certificate"
+          },
+          {
+            "fhir:code": "UP",
+            "fhir:display": "Upload",
+            "fhir:description": "Used to verify digital signature of cryptographically signed content uploaded to services within the Global Digital Health Certification Network, in particular the Trust Network Gateway"
+          },
+          {
+            "fhir:code": "TLS",
+            "fhir:display": "TLS",
+            "fhir:description": "Used for establishing (m)TLS connections with systems, in particular between the Trust Network Gateway and backend systems of a Trust Network Participant"
+          }
+        ]
+      }
+    ]
+  }
+}
