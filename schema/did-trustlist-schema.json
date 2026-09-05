@@ -1,0 +1,13 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://raw.githubusercontent.com/WorldHealthOrganization/tng-cdn-dev/refs/heads/main/schema/did-trustlist-schema.json",
+	"title": "DID Document Schema Validation",
+	"allOf": [
+		{
+			"$ref": "https://raw.githubusercontent.com/WorldHealthOrganization/tng-cdn-dev/refs/heads/main/schema/did-trustlist-syntax-schema.json"
+		},
+		{
+			"$ref": "https://raw.githubusercontent.com/WorldHealthOrganization/tng-cdn-dev/refs/heads/main/schema/did-trustlist-value-schema.json"
+		}
+	]
+}
