@@ -1,0 +1,18 @@
+{
+      "@protected": true,
+      "participant": {
+        "@id": "https://worldhealthorganization.github.io/smart-trust/ValueSet-Participants-DEV#participant",
+        "@type": "@id",
+        "@base": "https://worldhealthorganization.github.io/smart-trust/ValueSet-Participants-DEV.jsonld"
+      },
+      "keyusage": {
+        "@id": "https://worldhealthorganization.github.io/smart-trust/ValueSet-KeyUsage-DEV#keyusage",
+        "@type": "@id",
+        "@base": "https://worldhealthorganization.github.io/smart-trust/ValueSet-KeyUsage-DEV.jsonld"
+      },
+      "domain": {
+        "@id": "https://worldhealthorganization.github.io/smart-trust/ValueSet-Domains-DEV#domain",
+        "@type": "@id",
+        "@base": "https://worldhealthorganization.github.io/smart-trust/ValueSet-Domains-DEV.jsonld"
+      }
+    }
