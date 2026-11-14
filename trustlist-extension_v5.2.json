@@ -1,0 +1,21 @@
+{
+  "@context": [
+    {
+      "@version": 1.1,
+      "@protected": true,
+      "participant": {
+        "@id": "https://worldhealthorganization.github.io/smart-trust/ValueSet-Participants-DEV.jsonld",
+        "@type": "@id"
+      },
+      "keyusage": {
+        "@id": "https://worldhealthorganization.github.io/smart-trust/ValueSet-KeyUsage-DEV.jsonld",
+        "@type": "@id"
+      },
+      "domain": {
+        "@id": "https://worldhealthorganization.github.io/smart-trust/ValueSet-Domains-DEV.jsonld",
+        "@type": "@id"
+      },
+      "@base": "https://worldhealthorganization.github.io/smart-trust/"
+    }
+  ]
+}
