@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/diddocument.value.schema.json",
+  "title": "DID Document Value Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "@context": {
+      "type": "array",
+      "items": { "type": "string", "format": "uri" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+
+    "id": {
+      "type": "string",
+      "pattern": "^did:web:[a-zA-Z0-9:.-]+$"
+    },
+
+    "controller": {
+      "type": "string",
+      "pattern": "^did:web:[a-zA-Z0-9:.-]+$"
+    },
+
+    "verificationMethod": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^did:web:[^\\s]+#.+$"
+          },
+
+          "type": {
+            "type": "string",
+            "enum": ["JsonWebKey2020"]
+          },
+
+          "controller": {
+            "type": "string",
+            "pattern": "^did:web:[a-zA-Z0-9:.-]+$"
+          },
+
+          "publicKeyJwk": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "kty": {
+                "type": "string",
+                "enum": ["EC", "RSA"]
+              },
+              "kid": { "type": "string", "minLength": 1 },
+              "x5c": {
+                "type": "array",
+                "items": { "type": "string", "pattern": "^[A-Za-z0-9+/=\\r\\n]+$" },
+                "minItems": 1
+              },
+              "crv": { "type": "string" },
+              "x": { "type": "string" },
+              "y": { "type": "string" },
+              "e": { "type": "string" },
+              "n": { "type": "string" }
+            },
+            "required": ["kty", "kid", "x5c"],
+            "allOf": [
+              {
+                "if": { "properties": { "kty": { "const": "EC" } } },
+                "then": { "required": ["crv", "x", "y"] }
+              },
+              {
+                "if": { "properties": { "kty": { "const": "RSA" } } },
+                "then": { "required": ["e", "n"] }
+              }
+            ]
+          },
+
+          "domain": {
+            "type": "string",
+            "enum": ["DCC", "DDCC", "IPS", "IPS-PILGRIMAGE", "PH4H", "RACSEL-DDVC"]
+          },
+
+          "participant": {
+            "type": "string",
+            "pattern": "^[A-Z]{2,3}$"
+          },
+
+          "keyusage": {
+            "type": "string",
+            "enum": ["SCA", "DECA", "DSC", "DESC"]
+          }
+        },
+
+        "required": ["id", "type", "controller", "publicKeyJwk", "domain", "participant", "keyusage"]
+      }
+    },
+
+    "proof": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["JsonWebSignature2020"]
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "nonce": {
+          "type": "string",
+          "minLength": 1
+        },
+        "proofPurpose": {
+          "type": "string",
+          "enum": ["assertionMethod"]
+        },
+        "verificationMethod": {
+          "type": "string",
+          "pattern": "^did:web:[^\\s]+$"
+        },
+        "jws": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]*\\.[A-Za-z0-9_-]+$"
+        }
+      },
+      "required": [
+        "type",
+        "created",
+        "nonce",
+        "proofPurpose",
+        "verificationMethod",
+        "jws"
+      ]
+    }
+  },
+
+  "required": ["@context", "id", "controller", "verificationMethod", "proof"]
+}
+
+
+
+
